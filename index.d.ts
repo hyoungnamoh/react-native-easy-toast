@@ -19,7 +19,7 @@ interface ToastComponentProps {
   style: ViewStyle;
 }
 
-declare module "react-native-easy-toast" {
+declare module "@hyoungnamoh/react-native-easy-toast" {
   interface IDuration {
     LENGTH_SHORT: number;
     FOREVER: number;
