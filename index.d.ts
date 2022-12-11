@@ -16,7 +16,7 @@ interface ToastComponentProps {
   fadeInDuration?: number;
   fadeOutDuration?: number;
   opacity?: number;
-  style: ViewStyle;
+  style?: ViewStyle;
 }
 
 declare module "@hyoungnamoh/react-native-easy-toast" {
