@@ -16,6 +16,8 @@ import {
   TouchableWithoutFeedback,
 } from "react-native";
 
+import PropTypes from "prop-types";
+import { ViewPropTypes } from "deprecated-react-native-prop-types";
 export const DURATION = {
   LENGTH_SHORT: 500,
   FOREVER: 0,
@@ -140,3 +142,25 @@ const styles = StyleSheet.create({
     color: "white",
   },
 });
+
+Toast.propTypes = {
+  style: PropTypes.object,
+  position: PropTypes.oneOf(["top", "center", "bottom"]),
+  textStyle: PropTypes.object,
+  positionValue: PropTypes.number,
+  fadeInDuration: PropTypes.number,
+  fadeOutDuration: PropTypes.number,
+  opacity: PropTypes.number,
+  useNativeAnimation: PropTypes.bool,
+};
+
+Toast.defaultProps = {
+  style: {},
+  position: "bottom",
+  textStyle: styles.text,
+  positionValue: 120,
+  fadeInDuration: 500,
+  fadeOutDuration: 500,
+  opacity: 1,
+  useNativeAnimation: false,
+};
