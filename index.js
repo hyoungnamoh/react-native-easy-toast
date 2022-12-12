@@ -17,7 +17,7 @@ import {
 } from "react-native";
 
 import PropTypes from "prop-types";
-import { ViewPropTypes } from "deprecated-react-native-prop-types";
+
 export const DURATION = {
   LENGTH_SHORT: 500,
   FOREVER: 0,
@@ -35,17 +35,27 @@ export default class Toast extends Component {
     };
   }
 
+  componentDidMount() {
+    this.animation = Animated.timing(this.state.opacityValue, {
+      toValue: this.props.opacity,
+      duration: this.props.fadeInDuration,
+      useNativeDriver: this.props.useNativeAnimation,
+    });
+    this.animation.start(() => {
+      this.isShow = true;
+      if (true) this.close();
+    });
+  }
+
   show(text, duration, callback, onPress) {
     this.duration =
       typeof duration === "number" ? duration : DURATION.LENGTH_SHORT;
     this.callback = callback;
-    console.log(typeof onPress);
     if (typeof onPress === "function") this.onPress = onPress;
     this.setState({
       isShow: true,
       text: text,
     });
-
     this.animation = Animated.timing(this.state.opacityValue, {
       toValue: this.props.opacity,
       duration: this.props.fadeInDuration,
